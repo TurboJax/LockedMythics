@@ -12,7 +12,7 @@ This plugin prevents players from picking up or looting certain items based off 
 - `lockedmythics.getlocks`: Allows a player to use /getlocks
 - `lockedmythics.reloadlocks`: Allows a player to use /reloadlocks
 - `lockedmythics.removelock`: Allows a player to use /removelocks
-- `lockedmythics.admin`: Allows a player to use all the commands
+- `lockedmythics.admin`: Allows a player to use all the commands (Operators have this by default)
 
 ## Configuration
 Each entry in the config.yml file is a different lock.  
