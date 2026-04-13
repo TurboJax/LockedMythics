@@ -5,12 +5,19 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemModelLock implements Lock {
+    private final String id;
     private final Material material;
     private final NamespacedKey modelKey;
 
-    public ItemModelLock(Material material, NamespacedKey modelKey) {
+    public ItemModelLock(String id, Material material, NamespacedKey modelKey) {
+        this.id = id;
         this.material = material;
         this.modelKey = modelKey;
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override

@@ -4,12 +4,19 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class ModelDataLock implements Lock {
+    private final String id;
     private final Material material;
     private final int customModelData;
 
-    public ModelDataLock(Material material, int customModelData) {
+    public ModelDataLock(String id, Material material, int customModelData) {
+        this.id = id;
         this.material = material;
         this.customModelData = customModelData;
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override
