@@ -26,6 +26,11 @@ public class GetLocks implements BasicCommand {
     public void execute(CommandSourceStack commandSourceStack, String @NotNull [] args) {
         CommandSender sender = commandSourceStack.getSender();
 
+        if (args.length == 0) {
+            sender.sendMessage(Component.text("Usage: /getlocks <player>", NamedTextColor.YELLOW));
+            return;
+        }
+
         String playerName = args[0];
         OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
 
