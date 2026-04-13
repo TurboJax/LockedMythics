@@ -54,7 +54,7 @@ public class RemoveLock implements BasicCommand {
             }
 
             // Removing the lock from the player
-            dataManager.addLock(player, lock);
+            dataManager.removeLock(player, lock);
             sender.sendMessage(Component.text("Removed the \"" + lockId + "\" lock from " + playerName, NamedTextColor.GREEN));
         }
     }
