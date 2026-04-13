@@ -48,6 +48,8 @@ public class SqliteDataManager {
      * @param lock The lock to add
      */
     public void addLock(OfflinePlayer player, Lock lock) {
+        if (hasLock(player, lock)) return;
+
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO locks (uuid, lock_id) VALUES (?, ?);");
             stmt.setBytes(1, player.getUniqueId().toString().getBytes());
@@ -65,6 +67,8 @@ public class SqliteDataManager {
      * @param lock The lock to remove
      */
     public void removeLock(OfflinePlayer player, Lock lock) {
+        if (!hasLock(player, lock)) return;
+
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement("DELETE FROM locks WHERE uuid = ? AND lock_id LIKE ?;");
             stmt.setBytes(1, player.getUniqueId().toString().getBytes());
