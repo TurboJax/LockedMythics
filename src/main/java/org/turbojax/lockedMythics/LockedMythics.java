@@ -44,7 +44,7 @@ public final class LockedMythics extends JavaPlugin implements Listener {
         // Registering plugin commands
         registerCommand("addlock", new AddLock(dataManager));
         registerCommand("getlocks", new GetLocks(dataManager));
-        registerCommand("reloadlocks", new ReloadLocks(dataManager));
+        registerCommand("reloadlocks", new ReloadLocks(mainConfig));
         registerCommand("removelock", new RemoveLock(dataManager));
 
         // Registering plugin event listeners
