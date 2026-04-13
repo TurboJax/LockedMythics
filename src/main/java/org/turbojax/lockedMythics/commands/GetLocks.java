@@ -37,7 +37,13 @@ public class GetLocks implements BasicCommand {
         }
 
         String playerName = args[0];
-        OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+        OfflinePlayer player;
+        if (playerName.equalsIgnoreCase("@p")) {
+            player = commandSourceStack.getLocation().getNearbyPlayers(10).stream().findFirst().get();
+            playerName = player.getName();
+        } else {
+            player = Bukkit.getOfflinePlayer(playerName);
+        }
 
         // Getting the locks the player has
         List<Lock> locks = dataManager.getLocks(player);

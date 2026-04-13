@@ -36,7 +36,13 @@ public class AddLock implements BasicCommand {
 
         // Getting the player
         String playerName = args[0];
-        OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+        OfflinePlayer player;
+        if (playerName.equalsIgnoreCase("@p")) {
+            player = commandSourceStack.getLocation().getNearbyPlayers(10).stream().findFirst().get();
+            playerName = player.getName();
+        } else {
+            player = Bukkit.getOfflinePlayer(playerName);
+        }
 
         // Running through each lock passed to the command
         for (int i = 1; i < args.length; i++) {
