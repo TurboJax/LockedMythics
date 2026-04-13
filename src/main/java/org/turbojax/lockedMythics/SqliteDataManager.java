@@ -105,7 +105,7 @@ public class SqliteDataManager {
             ResultSet results = stmt.executeQuery();
 
             List<Lock> locks = new ArrayList<>();
-            while (!results.next()) {
+            while (results.next()) {
                 String lockId = results.getString(1);
                 Lock lock = LockedMythics.LOCKS.get(lockId);
                 if (lock != null) locks.add(lock);
