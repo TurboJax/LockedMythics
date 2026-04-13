@@ -7,7 +7,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import org.turbojax.lockedMythics.Main;
 import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
@@ -60,14 +60,14 @@ public class AddLock implements BasicCommand {
     }
 
     @Override
-    public Collection<String> suggest(CommandSourceStack commandSourceStack, String[] args) {
+    public @NotNull Collection<String> suggest(@NotNull CommandSourceStack commandSourceStack, String[] args) {
         // TODO: Filter by partial argument
         if (args.length <= 1) return Stream.of(Bukkit.getOfflinePlayers()).map(OfflinePlayer::getName).toList();
         return Main.LOCKS.keySet();
     }
 
     @Override
-    public @Nullable String permission() {
+    public @NotNull String permission() {
         return "lockedmythics.addlock";
     }
 }
