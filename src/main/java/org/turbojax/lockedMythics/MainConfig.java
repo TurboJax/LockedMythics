@@ -30,7 +30,7 @@ public class MainConfig {
     }
 
     public Lock parseLock(String id) {
-        ConfigurationSection section = config.getConfigurationSection("locks." + id);
+        ConfigurationSection section = config.getConfigurationSection(id);
         if (section == null) {
             LockedMythics.LOGGER.error("Could not parse section locks.{} because it doesn't exist.", id);
             return null;
@@ -90,11 +90,6 @@ public class MainConfig {
     }
 
     public List<Lock> getLocks() {
-        ConfigurationSection section = config.getConfigurationSection("locks");
-        if (section == null) {
-            LockedMythics.LOGGER.error("Missing the locks section.  Returning empty list.");
-            return List.of();
-        }
-        return section.getKeys(false).stream().map(this::parseLock).filter(Objects::nonNull).toList();
+        return config.getKeys(false).stream().map(this::parseLock).filter(Objects::nonNull).toList();
     }
 }

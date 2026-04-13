@@ -1,170 +1,169 @@
-locks:
-  # Eclipse Mythics
-  eclipse_bloodbath_mace:
-    type: MODEL_DATA
-    material: MACE
-    custom_model_data: 1003
-  eclipse_trance_axe:
-    type: MODEL_DATA
-    material: NETHERITE_AXE
-    custom_model_data: 1002
-  eclipse_fubuki_sword:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 1001
-  eclipse_kings_blade:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 1004
-  eclipse_dragon_egg:
-    type: MODEL_DATA
-    material: DRAGON_EGG
-    custom_model_data: 1005
+# Eclipse Mythics
+eclipse_bloodbath_mace:
+  type: MODEL_DATA
+  material: MACE
+  custom_model_data: 1003
+eclipse_trance_axe:
+  type: MODEL_DATA
+  material: NETHERITE_AXE
+  custom_model_data: 1002
+eclipse_fubuki_sword:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 1001
+eclipse_kings_blade:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 1004
+eclipse_dragon_egg:
+  type: MODEL_DATA
+  material: DRAGON_EGG
+  custom_model_data: 1005
 
-  # Altar SMP
-  altar_nuke_remote:
-    type: MODEL_DATA
-    material: AMETHYST_SHARD
-    custom_model_data: 4
-  altar_striker_bow:
-    type: MODEL_DATA
-    material: BOW
-    custom_model_data: 1
-  altar_crazy_slots:
-    type: MODEL_DATA
-    material: CLAY_BALL
-    custom_model_data: 4
-  altar_vulcan_crossbow:
-    type: MODEL_DATA
-    material: CROSSBOW
-    custom_model_data: 1
-  altar_pale_gun:
-    type: MODEL_DATA
-    material: CROSSBOW
-    custom_model_data: 2
-  altar_knightfall_1:
-    type: MODEL_DATA
-    material: MACE
-    custom_model_data: 15
-  altar_knightfall_2:
-    type: MODEL_DATA
-    material: MACE
-    custom_model_data: 16
-  altar_knightfall_3:
-    type: MODEL_DATA
-    material: MACE
-    custom_model_data: 17
-  altar_paladins_axe:
-    type: MODEL_DATA
-    material: NETHERITE_AXE
-    custom_model_data: 2
-  altar_copper_boots:
-    type: MODEL_DATA
-    material: NETHERITE_BOOTS
-    custom_model_data: 1
-  altar_copper_chestplate:
-    type: MODEL_DATA
-    material: NETHERITE_CHESTPLATE
-    custom_model_data: 1
-  altar_copper_helmet:
-    type: MODEL_DATA
-    material: NETHERITE_HELMET
-    custom_model_data: 1
-  altar_copper_leggings:
-    type: MODEL_DATA
-    material: NETHERITE_LEGGINGS
-    custom_model_data: 1
-  altar_copper_pickaxe:
-    type: MODEL_DATA
-    material: NETHERITE_PICKAXE
-    custom_model_data: 1
-  altar_bone_blade:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 1
-  altar_wand_of_illusion:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 2
-  altar_bloodlust:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 3
-  altar_frost_scythe:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 4
-  altar_nightpiercer:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 5
-  altar_hyperion:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 6
-  altar_pure_blade:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 7
-  altar_earth_gauntlet:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 8
-  altar_withered_blade:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 9
-  altar_shadow_blade:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 10
-  altar_cutlass:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 11
-  altar_windweaver:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 12
-  altar_echo:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 13
-  altar_eclipse:
-    type: MODEL_DATA
-    material: NETHERITE_SWORD
-    custom_model_data: 14
+# Altar SMP
+altar_nuke_remote:
+  type: MODEL_DATA
+  material: AMETHYST_SHARD
+  custom_model_data: 4
+altar_striker_bow:
+  type: MODEL_DATA
+  material: BOW
+  custom_model_data: 1
+altar_crazy_slots:
+  type: MODEL_DATA
+  material: CLAY_BALL
+  custom_model_data: 4
+altar_vulcan_crossbow:
+  type: MODEL_DATA
+  material: CROSSBOW
+  custom_model_data: 1
+altar_pale_gun:
+  type: MODEL_DATA
+  material: CROSSBOW
+  custom_model_data: 2
+altar_knightfall_1:
+  type: MODEL_DATA
+  material: MACE
+  custom_model_data: 15
+altar_knightfall_2:
+  type: MODEL_DATA
+  material: MACE
+  custom_model_data: 16
+altar_knightfall_3:
+  type: MODEL_DATA
+  material: MACE
+  custom_model_data: 17
+altar_paladins_axe:
+  type: MODEL_DATA
+  material: NETHERITE_AXE
+  custom_model_data: 2
+altar_copper_boots:
+  type: MODEL_DATA
+  material: NETHERITE_BOOTS
+  custom_model_data: 1
+altar_copper_chestplate:
+  type: MODEL_DATA
+  material: NETHERITE_CHESTPLATE
+  custom_model_data: 1
+altar_copper_helmet:
+  type: MODEL_DATA
+  material: NETHERITE_HELMET
+  custom_model_data: 1
+altar_copper_leggings:
+  type: MODEL_DATA
+  material: NETHERITE_LEGGINGS
+  custom_model_data: 1
+altar_copper_pickaxe:
+  type: MODEL_DATA
+  material: NETHERITE_PICKAXE
+  custom_model_data: 1
+altar_bone_blade:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 1
+altar_wand_of_illusion:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 2
+altar_bloodlust:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 3
+altar_frost_scythe:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 4
+altar_nightpiercer:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 5
+altar_hyperion:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 6
+altar_pure_blade:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 7
+altar_earth_gauntlet:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 8
+altar_withered_blade:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 9
+altar_shadow_blade:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 10
+altar_cutlass:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 11
+altar_windweaver:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 12
+altar_echo:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 13
+altar_eclipse:
+  type: MODEL_DATA
+  material: NETHERITE_SWORD
+  custom_model_data: 14
 
-  # Trims SMP
-  trims_dragon_greatblade:
-    type: MODEL_DATA
-    material: DIAMOND_SWORD
-    custom_model_data: 1141
+# Trims SMP
+trims_dragon_greatblade:
+  type: MODEL_DATA
+  material: DIAMOND_SWORD
+  custom_model_data: 1141
 
-  # Crazy Mythicals
-  crazymythicals_dragon_cannon:
-    type: ITEM_MODEL
-    material: CROSSBOW
-    model_key: "cm:item/weapons/dragon"
-  crazymythicals_hourglass_dagger:
-    type: ITEM_MODEL
-    material: NETHERITE_SWORD
-    model_key: "cm:item/weapons/dagger"
-  crazymythicals_great_hammer:
-    type: ITEM_MODEL
-    material: NETHERITE_SWORD
-    model_key: "cm:item/weapons/hammer"
-  crazymythicals_ghost_shield:
-    type: ITEM_MODEL
-    material: SHIELD
-    model_key: "cm:item/weapons/ghost_shield"
-  crazymythicals_the_judge:
-    type: ITEM_MODEL
-    material: NETHERITE_SWORD
-    model_key: "cm:item/weapons/judge"
+# Crazy Mythicals
+crazymythicals_dragon_cannon:
+  type: ITEM_MODEL
+  material: CROSSBOW
+  model_key: "cm:item/weapons/dragon"
+crazymythicals_hourglass_dagger:
+  type: ITEM_MODEL
+  material: NETHERITE_SWORD
+  model_key: "cm:item/weapons/dagger"
+crazymythicals_great_hammer:
+  type: ITEM_MODEL
+  material: NETHERITE_SWORD
+  model_key: "cm:item/weapons/hammer"
+crazymythicals_ghost_shield:
+  type: ITEM_MODEL
+  material: SHIELD
+  model_key: "cm:item/weapons/ghost_shield"
+crazymythicals_the_judge:
+  type: ITEM_MODEL
+  material: NETHERITE_SWORD
+  model_key: "cm:item/weapons/judge"
 
-  # ManePear Scythe
-  manepear_scythe:
-    type: MODEL_DATA
-    material: MACE
-    custom_model_data: 9999
+# ManePear Scythe
+manepear_scythe:
+  type: MODEL_DATA
+  material: MACE
+  custom_model_data: 9999
