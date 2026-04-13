@@ -6,7 +6,7 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.turbojax.lockedMythics.locks.ItemModelLock;
 import org.turbojax.lockedMythics.locks.Lock;
-import org.turbojax.lockedMythics.locks.ModelDataLock;
+import org.turbojax.lockedMythics.locks.CustomModelDataLock;
 
 import java.util.List;
 import java.util.Objects;
@@ -41,19 +41,6 @@ public class MainConfig {
         Material material;
         return switch (type) {
             case "ITEM_MODEL":
-                // Getting the material
-                matName = section.getString("material");
-                if (matName == null) {
-                    LockedMythics.LOGGER.error("Lock {} is missing the material field", id);
-                    yield null;
-                }
-
-                material = Material.getMaterial(matName);
-                if (material == null) {
-                    LockedMythics.LOGGER.error("Lock {} has an invalid material \"{}\"", id, matName);
-                    yield null;
-                }
-
                 // Getting the model key
                 String modelKey = section.getString("model_key");
                 if (modelKey == null) {
@@ -61,13 +48,10 @@ public class MainConfig {
                     yield null;
                 }
 
-                yield new ItemModelLock(id, material, NamespacedKey.fromString(modelKey));
-            case "MODEL_DATA":
                 // Getting the material
                 matName = section.getString("material");
                 if (matName == null) {
-                    LockedMythics.LOGGER.error("Lock {} is missing the material field", id);
-                    yield null;
+                    yield new ItemModelLock(id, NamespacedKey.fromString(modelKey));
                 }
 
                 material = Material.getMaterial(matName);
@@ -76,6 +60,8 @@ public class MainConfig {
                     yield null;
                 }
 
+                yield new ItemModelLock(id, NamespacedKey.fromString(modelKey), material);
+            case "CUSTOM_MODEL_DATA":
                 // Getting the custom model data
                 int customModelData = section.getInt("custom_model_data", -1);
                 if (customModelData == -1) {
@@ -83,7 +69,19 @@ public class MainConfig {
                     yield null;
                 }
 
-                yield new ModelDataLock(id, material, customModelData);
+                // Getting the material
+                matName = section.getString("material");
+                if (matName == null) {
+                    yield new CustomModelDataLock(id, customModelData);
+                }
+
+                material = Material.getMaterial(matName);
+                if (material == null) {
+                    LockedMythics.LOGGER.error("Lock {} has an invalid material \"{}\"", id, matName);
+                    yield null;
+                }
+
+                yield new CustomModelDataLock(id, customModelData, material);
             case null:
             default:
                 LockedMythics.LOGGER.error("Lock {} has an invalid lock type", id);

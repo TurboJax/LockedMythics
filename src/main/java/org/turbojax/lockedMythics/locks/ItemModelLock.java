@@ -6,13 +6,17 @@ import org.bukkit.inventory.ItemStack;
 
 public class ItemModelLock implements Lock {
     private final String id;
-    private final Material material;
     private final NamespacedKey modelKey;
+    private final Material material;
 
-    public ItemModelLock(String id, Material material, NamespacedKey modelKey) {
+    public ItemModelLock(String id, NamespacedKey modelKey) {
+        this(id, modelKey, null);
+    }
+
+    public ItemModelLock(String id, NamespacedKey modelKey, Material material) {
         this.id = id;
-        this.material = material;
         this.modelKey = modelKey;
+        this.material = material;
     }
 
     @Override
@@ -21,14 +25,9 @@ public class ItemModelLock implements Lock {
     }
 
     @Override
-    public Material getMaterial() {
-        return material;
-    }
-
-    @Override
     public boolean matches(ItemStack item) {
         if (item == null) return false;
-        if (item.getType() != material) return false;
+        if (material != null && item.getType() != material) return false;
         if (item.getItemMeta() == null) return false;
 
         NamespacedKey appliedModel = item.getItemMeta().getItemModel();

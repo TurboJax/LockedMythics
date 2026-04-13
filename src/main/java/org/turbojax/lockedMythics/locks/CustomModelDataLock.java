@@ -3,15 +3,22 @@ package org.turbojax.lockedMythics.locks;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ModelDataLock implements Lock {
+public class CustomModelDataLock implements Lock {
+    // Required params
     private final String id;
-    private final Material material;
     private final int customModelData;
 
-    public ModelDataLock(String id, Material material, int customModelData) {
+    // Optional params
+    private final Material material;
+
+    public CustomModelDataLock(String id, int customModelData) {
+        this(id, customModelData, null);
+    }
+
+    public CustomModelDataLock(String id, int customModelData, Material material) {
         this.id = id;
-        this.material = material;
         this.customModelData = customModelData;
+        this.material = material;
     }
 
     @Override
@@ -20,18 +27,9 @@ public class ModelDataLock implements Lock {
     }
 
     @Override
-    public Material getMaterial() {
-        return material;
-    }
-
-    public int getCustomModelData() {
-        return customModelData;
-    }
-
-    @Override
     public boolean matches(ItemStack item) {
         if (item == null) return false;
-        if (item.getType() != material) return false;
+        if (material != null && item.getType() != material) return false;
         if (item.getItemMeta() == null) return false;
         return item.getItemMeta().getCustomModelDataComponent().getFloats().getFirst() == customModelData;
     }
