@@ -14,7 +14,7 @@ public class ReloadLocks implements BasicCommand {
 
     @Override
     public void execute(CommandSourceStack commandSourceStack, String @NotNull [] args) {
-        dataManager.load();
+        // TODO: Implement this when you can manage locks from the config
         commandSourceStack.getSender().sendMessage("Reloaded all locks!");
     }
 
