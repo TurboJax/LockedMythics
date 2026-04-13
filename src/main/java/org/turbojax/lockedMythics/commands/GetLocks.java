@@ -39,14 +39,24 @@ public class GetLocks implements BasicCommand {
 
         String playerName = args[0];
         OfflinePlayer player;
-        if (playerName.equalsIgnoreCase("@p")) {
-            player = TargetSelectors.nearestPlayer(commandSourceStack);
+        if (playerName.startsWith("@")) {
+            List<Player> players = Bukkit.selectEntities(commandSourceStack.getSender(), playerName)
+                    .stream()
+                    .filter(entity -> entity instanceof Player)
+                    .map(p -> (Player) p)
+                    .toList();
 
-            // Logging is already done by TargetSelectors
-            if (player == null) {
+            if (players.isEmpty()) {
+                LockedMythics.LOGGER.error("No players found");
                 return;
             }
 
+            if (players.size() > 1) {
+                LockedMythics.LOGGER.error("Too many results");
+                return;
+            }
+
+            player = players.getFirst();
             playerName = player.getName();
         } else {
             player = Bukkit.getOfflinePlayer(playerName);

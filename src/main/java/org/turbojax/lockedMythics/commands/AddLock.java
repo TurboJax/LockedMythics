@@ -7,6 +7,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.turbojax.lockedMythics.LockedMythics;
@@ -14,6 +15,7 @@ import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class AddLock implements BasicCommand {
@@ -38,14 +40,24 @@ public class AddLock implements BasicCommand {
         // Getting the player
         String playerName = args[0];
         OfflinePlayer player;
-        if (playerName.equalsIgnoreCase("@p")) {
-            player = TargetSelectors.nearestPlayer(commandSourceStack);
+        if (playerName.startsWith("@")) {
+            List<Player> players = Bukkit.selectEntities(commandSourceStack.getSender(), playerName)
+                    .stream()
+                    .filter(entity -> entity instanceof Player)
+                    .map(p -> (Player) p)
+                    .toList();
 
-            // Logging is already done by TargetSelectors
-            if (player == null) {
+            if (players.isEmpty()) {
+                LockedMythics.LOGGER.error("No players found");
                 return;
             }
 
+            if (players.size() > 1) {
+                LockedMythics.LOGGER.error("Too many results");
+                return;
+            }
+
+            player = players.getFirst();
             playerName = player.getName();
         } else {
             player = Bukkit.getOfflinePlayer(playerName);
