@@ -22,9 +22,18 @@ public final class LockedMythics extends JavaPlugin implements Listener {
     public static final Logger LOGGER = LoggerFactory.getLogger("LockedMythics");
     public static final Map<String,Lock> LOCKS = new HashMap<>();
 
+    private final SqliteDataManager dataManager;
+
+    public LockedMythics() {
+        this.dataManager = new SqliteDataManager();
+    }
+
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        // Loading the sqlite data
+        dataManager.load();
+
+        // Adding the default locks to the map
         loadDefaultLocks();
 
         Bukkit.getPluginManager().registerEvents(this, this);
@@ -92,8 +101,7 @@ public final class LockedMythics extends JavaPlugin implements Listener {
 
         ItemStack item = event.getItem().getItemStack();
 
-        // Replace LOCKS with `dataManager.getActiveLocks(player)`
-        LOCKS.stream().filter(lock -> lock.matches(item)).findAny().ifPresent(lock -> {
+        dataManager.getLocks(player).stream().filter(lock -> lock.matches(item)).findAny().ifPresent(lock -> {
             event.setCancelled(true);
         });
     }
