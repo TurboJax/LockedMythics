@@ -43,7 +43,7 @@ public class AddLock implements BasicCommand {
                 for (Lock lock : LockedMythics.LOCKS.values()) {
                     dataManager.addLock(player, lock);
                 }
-                sender.sendMessage(Component.text("Applied all locks to " + playerName, NamedTextColor.GREEN));
+                sender.sendMessage(Component.text("Applied all locks to " + playerName, NamedTextColor.GOLD));
                 return;
             }
 
@@ -55,7 +55,7 @@ public class AddLock implements BasicCommand {
 
             // Adding the lock to the player
             dataManager.addLock(player, lock);
-            sender.sendMessage(Component.text("Added the \"" + lockId + "\" lock to " + playerName, NamedTextColor.GREEN));
+            sender.sendMessage(Component.text("Added the \"" + lockId + "\" lock to " + playerName, NamedTextColor.GOLD));
         }
     }
 

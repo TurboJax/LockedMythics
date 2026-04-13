@@ -3,6 +3,7 @@ package org.turbojax.lockedMythics.commands;
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
@@ -39,20 +40,20 @@ public class GetLocks implements BasicCommand {
 
         // Handling when the player has no active locks
         if (locks.isEmpty()) {
-            sender.sendMessage(Component.text(playerName + " has no active locks."));
+            sender.sendMessage(Component.text(playerName + " has no active locks.", NamedTextColor.GOLD));
             return;
         }
 
-        sender.sendMessage(Component.text(playerName + "'s Active Locks:"));
+        sender.sendMessage(Component.text(playerName + "'s Active Locks:", NamedTextColor.GOLD));
         // If the number of applied locks == the number of locks total, then the player has every lock so it prints "*".
         if (locks.size() == LockedMythics.LOCKS.size()) {
-            sender.sendMessage(Component.text("- *"));
+            sender.sendMessage(Component.text("- *", NamedTextColor.GOLD));
             return;
         }
 
         // Displaying each of the player's lock
         for (Lock lock : locks) {
-            sender.sendMessage(Component.text("- " + lock.getId()));
+            sender.sendMessage(Component.text("- " + lock.getId(), NamedTextColor.GOLD));
         }
     }
 

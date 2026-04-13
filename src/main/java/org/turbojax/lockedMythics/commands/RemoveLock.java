@@ -43,7 +43,7 @@ public class RemoveLock implements BasicCommand {
                 for (Lock lock : LockedMythics.LOCKS.values()) {
                     dataManager.removeLock(player, lock);
                 }
-                sender.sendMessage(Component.text("Removed all locks from " + playerName, NamedTextColor.GREEN));
+                sender.sendMessage(Component.text("Removed all locks from " + playerName, NamedTextColor.GOLD));
                 return;
             }
 
@@ -55,7 +55,7 @@ public class RemoveLock implements BasicCommand {
 
             // Removing the lock from the player
             dataManager.removeLock(player, lock);
-            sender.sendMessage(Component.text("Removed the \"" + lockId + "\" lock from " + playerName, NamedTextColor.GREEN));
+            sender.sendMessage(Component.text("Removed the \"" + lockId + "\" lock from " + playerName, NamedTextColor.GOLD));
         }
     }
 
