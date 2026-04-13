@@ -2,11 +2,11 @@ package org.turbojax.lockedMythics.commands;
 
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.turbojax.lockedMythics.LockedMythics;
@@ -25,7 +25,11 @@ public class GetLocks implements BasicCommand {
 
     @Override
     public void execute(CommandSourceStack commandSourceStack, String @NotNull [] args) {
-        CommandSender sender = commandSourceStack.getSender();
+        Audience sender = commandSourceStack.getSender();
+
+        if (commandSourceStack.getExecutor() != null) {
+            sender = commandSourceStack.getExecutor();
+        }
 
         if (args.length == 0) {
             sender.sendMessage(Component.text("Usage: /getlocks <player>", NamedTextColor.YELLOW));

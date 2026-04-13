@@ -2,11 +2,11 @@ package org.turbojax.lockedMythics.commands;
 
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import org.turbojax.lockedMythics.LockedMythics;
 import org.turbojax.lockedMythics.SqliteDataManager;
@@ -24,7 +24,11 @@ public class AddLock implements BasicCommand {
 
     @Override
     public void execute(CommandSourceStack commandSourceStack, String[] args) {
-        CommandSender sender = commandSourceStack.getSender();
+        Audience sender = commandSourceStack.getSender();
+
+        if (commandSourceStack.getExecutor() != null) {
+            sender = commandSourceStack.getExecutor();
+        }
 
         if (args.length < 2) {
             sender.sendMessage(Component.text("Usage: /addlock <player> <locks|*>", NamedTextColor.YELLOW));
