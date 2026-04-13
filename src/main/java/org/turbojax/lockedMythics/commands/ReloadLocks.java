@@ -5,6 +5,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.jetbrains.annotations.NotNull;
+import org.turbojax.lockedMythics.LockedMythics;
 import org.turbojax.lockedMythics.MainConfig;
 
 public class ReloadLocks implements BasicCommand {
@@ -17,6 +18,8 @@ public class ReloadLocks implements BasicCommand {
     @Override
     public void execute(CommandSourceStack commandSourceStack, String @NotNull [] args) {
         config.load();
+        LockedMythics.LOCKS.clear();
+        config.getLocks().forEach(LockedMythics::addLock);
         commandSourceStack.getSender().sendMessage(Component.text("Reloaded the config!", NamedTextColor.GOLD));
     }
 
