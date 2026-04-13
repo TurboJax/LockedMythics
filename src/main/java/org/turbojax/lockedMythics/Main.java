@@ -55,7 +55,7 @@ public final class Main extends JavaPlugin implements Listener {
         LOCKS.add(new ModelDataLock("Bloodlust", Material.NETHERITE_SWORD, 3));
         LOCKS.add(new ModelDataLock("Frost Scythe", Material.NETHERITE_SWORD, 4));
         LOCKS.add(new ModelDataLock("Nightpiercer", Material.NETHERITE_SWORD, 5));
-        LOCKS.add(new ModelDataLock("Hypherion", Material.NETHERITE_SWORD, 6));
+        LOCKS.add(new ModelDataLock("Hyperion", Material.NETHERITE_SWORD, 6));
         LOCKS.add(new ModelDataLock("Pure Blade", Material.NETHERITE_SWORD, 7));
         LOCKS.add(new ModelDataLock("Earth Gautlet", Material.NETHERITE_SWORD, 8));
         LOCKS.add(new ModelDataLock("Withered Blade", Material.NETHERITE_SWORD, 9));
