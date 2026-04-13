@@ -12,19 +12,19 @@ libraries:
 
 permissions:
   lockedmythics.addlock:
-    description: Allows a player to add locks to another player
+    description: Allows a player to use /addlock
     default: false
   lockedmythics.getlocks:
-    description: Allows a player to see the locks of another player
+    description: Allows a player to use /getlocks
     default: false
   lockedmythics.reloadlocks:
-    description: Allows a player to reload the list of locks
+    description: Allows a player to use /reloadlocks
     default: false
   lockedmythics.removelock:
-    description: Allows a player to remove locks from another player
+    description: Allows a player to use /removelocks
     default: false
   lockedmythics.admin:
-    description: Gives a player full access to this plugin
+    description: Allows a player to use all the commands
     default: op
     children:
       lockedmythics.addlock: true
