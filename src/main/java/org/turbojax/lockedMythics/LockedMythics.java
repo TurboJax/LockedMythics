@@ -18,7 +18,7 @@ import org.turbojax.lockedMythics.locks.ModelDataLock;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class Main extends JavaPlugin implements Listener {
+public final class LockedMythics extends JavaPlugin implements Listener {
     public static final Logger LOGGER = LoggerFactory.getLogger("LockedMythics");
     public static final Map<String,Lock> LOCKS = new HashMap<>();
 

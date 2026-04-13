@@ -8,7 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
-import org.turbojax.lockedMythics.Main;
+import org.turbojax.lockedMythics.LockedMythics;
 import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
 
@@ -40,14 +40,14 @@ public class AddLock implements BasicCommand {
 
             // Handling the '*' argument
             if (lockId.equals("*")) {
-                for (Lock lock : Main.LOCKS.values()) {
+                for (Lock lock : LockedMythics.LOCKS.values()) {
                     dataManager.addLock(player, lock);
                 }
                 sender.sendMessage(Component.text("Applied all locks to " + playerName, NamedTextColor.GREEN));
                 return;
             }
 
-            Lock lock = Main.LOCKS.get(lockId);
+            Lock lock = LockedMythics.LOCKS.get(lockId);
             if (lock == null) {
                 sender.sendMessage(Component.text("No lock \"" + lockId + "\" exists!", NamedTextColor.RED));
                 return;
@@ -63,7 +63,7 @@ public class AddLock implements BasicCommand {
     public @NotNull Collection<String> suggest(@NotNull CommandSourceStack commandSourceStack, String[] args) {
         // TODO: Filter by partial argument
         if (args.length <= 1) return Stream.of(Bukkit.getOfflinePlayers()).map(OfflinePlayer::getName).toList();
-        return Main.LOCKS.keySet();
+        return LockedMythics.LOCKS.keySet();
     }
 
     @Override

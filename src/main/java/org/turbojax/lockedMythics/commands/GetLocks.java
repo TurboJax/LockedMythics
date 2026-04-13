@@ -8,7 +8,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.turbojax.lockedMythics.Main;
+import org.turbojax.lockedMythics.LockedMythics;
 import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
 
@@ -40,7 +40,7 @@ public class GetLocks implements BasicCommand {
 
         sender.sendMessage(Component.text(playerName + "'s Active Locks:"));
         // If the number of applied locks == the number of locks total, then the player has every lock so it prints "*".
-        if (locks.size() == Main.LOCKS.size()) {
+        if (locks.size() == LockedMythics.LOCKS.size()) {
             sender.sendMessage(Component.text("- *"));
             return;
         }

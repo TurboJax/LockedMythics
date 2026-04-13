@@ -8,7 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
-import org.turbojax.lockedMythics.Main;
+import org.turbojax.lockedMythics.LockedMythics;
 import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
 
@@ -40,14 +40,14 @@ public class RemoveLock implements BasicCommand {
 
             // Handling the '*' argument
             if (lockId.equals("*")) {
-                for (Lock lock : Main.LOCKS.values()) {
+                for (Lock lock : LockedMythics.LOCKS.values()) {
                     dataManager.removeLock(player, lock);
                 }
                 sender.sendMessage(Component.text("Removed all locks from " + playerName, NamedTextColor.GREEN));
                 return;
             }
 
-            Lock lock = Main.LOCKS.get(lockId);
+            Lock lock = LockedMythics.LOCKS.get(lockId);
             if (lock == null) {
                 sender.sendMessage(Component.text("No lock \"" + lockId + "\" exists!", NamedTextColor.RED));
                 return;
