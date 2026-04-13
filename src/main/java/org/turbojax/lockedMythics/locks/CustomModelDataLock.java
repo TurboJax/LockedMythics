@@ -31,6 +31,7 @@ public class CustomModelDataLock implements Lock {
         if (item == null) return false;
         if (material != null && item.getType() != material) return false;
         if (item.getItemMeta() == null) return false;
+        if (item.getItemMeta().getCustomModelDataComponent().getFloats().isEmpty()) return false;
         return item.getItemMeta().getCustomModelDataComponent().getFloats().getFirst() == customModelData;
     }
 }
