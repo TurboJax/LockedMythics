@@ -49,8 +49,8 @@ public class AddLock implements BasicCommand {
 
             Lock lock = LockedMythics.LOCKS.get(lockId);
             if (lock == null) {
-                sender.sendMessage(Component.text("No lock \"" + lockId + "\" exists!", NamedTextColor.RED));
-                return;
+                sender.sendMessage(Component.text("Could not find lock \"" + lockId + "\"!", NamedTextColor.RED));
+                continue;
             }
 
             // Adding the lock to the player

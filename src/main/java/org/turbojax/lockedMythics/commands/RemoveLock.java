@@ -50,7 +50,7 @@ public class RemoveLock implements BasicCommand {
             Lock lock = LockedMythics.LOCKS.get(lockId);
             if (lock == null) {
                 sender.sendMessage(Component.text("No lock \"" + lockId + "\" exists!", NamedTextColor.RED));
-                return;
+                continue;
             }
 
             // Removing the lock from the player
