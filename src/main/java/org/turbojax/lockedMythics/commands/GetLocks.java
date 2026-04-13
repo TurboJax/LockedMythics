@@ -15,6 +15,7 @@ import org.turbojax.lockedMythics.locks.Lock;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class GetLocks implements BasicCommand {
     private final SqliteDataManager dataManager;
@@ -69,10 +70,15 @@ public class GetLocks implements BasicCommand {
 
     @Override
     public @NotNull Collection<String> suggest(@NotNull CommandSourceStack commandSourceStack, String[] args) {
-        // TODO: Filter by partial argument
-        if (args.length <= 1) return Bukkit.getOnlinePlayers().stream().map(Player::getName).toList();
+        Stream<String> stream = Stream.empty();
+        if (args.length <= 1) stream = Stream.concat(Stream.of("@p"), Bukkit.getOnlinePlayers().stream().map(Player::getName));
 
-        return List.of();
+        // Filtering by what was entered
+        if (args.length > 0) {
+            stream = stream.filter(s -> s.startsWith(args[args.length - 1]));
+        }
+
+        return stream.toList();
     }
 
     @Override
