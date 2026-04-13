@@ -25,7 +25,7 @@ public class SqliteDataManager {
         for (Lock lock : locks) removeLock(player, lock);
     }
 
-    public void hasLock(OfflinePlayer player, Lock lock) {}
+    public boolean hasLock(OfflinePlayer player, Lock lock) {}
 
-    public void getLocks(OfflinePlayer player) {}
+    public List<Lock> getLocks(OfflinePlayer player) {}
 }
