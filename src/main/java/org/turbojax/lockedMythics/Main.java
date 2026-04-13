@@ -3,7 +3,11 @@ package org.turbojax.lockedMythics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,6 +78,18 @@ public final class Main extends JavaPlugin implements Listener {
         LOCKS.add(new ItemModelLock("Great hammer", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/hammer")));
         LOCKS.add(new ItemModelLock("Ghost Shield", Material.SHIELD, new NamespacedKey("cm", "item/weapons/ghost_shield")));
         LOCKS.add(new ItemModelLock("The Judge", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/judge")));
+    }
+
+    @EventHandler
+    public void onPlayerPickupItem(EntityPickupItemEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+
+        ItemStack item = event.getItem().getItemStack();
+
+        // Replace LOCKS with `dataManager.getActiveLocks(player)`
+        LOCKS.stream().filter(lock -> lock.matches(item)).findAny().ifPresent(lock -> {
+            event.setCancelled(true);
+        });
     }
 
     @Override
