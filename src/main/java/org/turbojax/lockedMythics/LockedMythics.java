@@ -36,7 +36,7 @@ public final class LockedMythics extends JavaPlugin implements Listener {
         mainConfig.load();
 
         // Putting the yaml data into the hashmap
-        mainConfig.getLocks().forEach(this::addLock);
+        mainConfig.getLocks().forEach(LockedMythics::addLock);
 
         // Loading the sqlite data
         dataManager.load();
@@ -51,7 +51,7 @@ public final class LockedMythics extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
-    public void addLock(Lock lock) {
+    public static void addLock(Lock lock) {
         LOCKS.put(lock.getId(), lock);
     }
 
