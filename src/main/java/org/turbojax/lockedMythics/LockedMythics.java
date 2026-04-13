@@ -24,7 +24,7 @@ public final class LockedMythics extends JavaPlugin implements Listener {
     private final SqliteDataManager dataManager;
 
     public LockedMythics() {
-        this.dataManager = new SqliteDataManager();
+        this.dataManager = new SqliteDataManager(this);
     }
 
     @Override
