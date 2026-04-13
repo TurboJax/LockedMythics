@@ -1,10 +1,10 @@
 package org.turbojax.lockedMythics;
 
 import org.bukkit.OfflinePlayer;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.sqlite.SQLiteDataSource;
 import org.turbojax.lockedMythics.locks.Lock;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,20 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SqliteDataManager {
-    private final LockedMythics plugin;
     private final SQLiteDataSource dataSource;
 
-    public SqliteDataManager() {
-        plugin = JavaPlugin.getPlugin(LockedMythics.class);
-
+    public SqliteDataManager(LockedMythics plugin) {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
+        File dataFolder = plugin.getDataFolder();
+        if (!dataFolder.exists()) {
+            dataFolder.mkdirs();
+        }
+
         dataSource = new SQLiteDataSource();
-        dataSource.setUrl("jdbc:sqlite:" + plugin.getDataFolder() + "/database.db");
+        dataSource.setUrl("jdbc:sqlite:" + dataFolder + "/database.db");
     }
 
     /** Loads the tables for the SQLite database. */
