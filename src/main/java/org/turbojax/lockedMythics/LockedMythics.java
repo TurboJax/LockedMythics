@@ -11,9 +11,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.turbojax.lockedMythics.locks.ItemModelLock;
-import org.turbojax.lockedMythics.locks.Lock;
-import org.turbojax.lockedMythics.locks.ModelDataLock;
+import org.turbojax.lockedMythics.commands.*;
+import org.turbojax.lockedMythics.locks.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +35,13 @@ public final class LockedMythics extends JavaPlugin implements Listener {
         // Adding the default locks to the map
         loadDefaultLocks();
 
+        // Registering plugin commands
+        registerCommand("addlock", new AddLock(dataManager));
+        registerCommand("getlocks", new GetLocks(dataManager));
+        registerCommand("reloadlocks", new ReloadLocks(dataManager));
+        registerCommand("removelock", new RemoveLock(dataManager));
+
+        // Registering plugin event listeners
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
