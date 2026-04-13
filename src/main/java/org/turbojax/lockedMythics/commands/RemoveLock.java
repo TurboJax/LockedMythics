@@ -39,7 +39,13 @@ public class RemoveLock implements BasicCommand {
         String playerName = args[0];
         OfflinePlayer player;
         if (playerName.equalsIgnoreCase("@p")) {
-            player = commandSourceStack.getLocation().getNearbyPlayers(10).stream().findFirst().get();
+            player = TargetSelectors.nearestPlayer(commandSourceStack);
+
+            // Logging is already done by TargetSelectors
+            if (player == null) {
+                return;
+            }
+
             playerName = player.getName();
         } else {
             player = Bukkit.getOfflinePlayer(playerName);
