@@ -47,54 +47,54 @@ public final class LockedMythics extends JavaPlugin implements Listener {
 
     public void loadDefaultLocks() {
         // Eclipse Mythics
-        addLock(new ModelDataLock("Bloodbath Mace", Material.MACE, 1003));
-        addLock(new ModelDataLock("Trance Axe", Material.NETHERITE_AXE, 1002));
-        addLock(new ModelDataLock("Fubuki Sword", Material.NETHERITE_SWORD, 1001));
-        addLock(new ModelDataLock("King's Blade", Material.NETHERITE_SWORD, 1004));
-        addLock(new ModelDataLock("Dragon Egg", Material.DRAGON_EGG, 1005));
+        addLock(new ModelDataLock("eclipse.bloodbath_mace", Material.MACE, 1003));
+        addLock(new ModelDataLock("eclipse.trance_axe", Material.NETHERITE_AXE, 1002));
+        addLock(new ModelDataLock("eclipse.fubuki_sword", Material.NETHERITE_SWORD, 1001));
+        addLock(new ModelDataLock("eclipse.kings_blade", Material.NETHERITE_SWORD, 1004));
+        addLock(new ModelDataLock("eclipse.dragon_egg", Material.DRAGON_EGG, 1005));
 
         // Altar SMP
-        addLock(new ModelDataLock("Nuke Remote", Material.AMETHYST_SHARD, 4));
-        addLock(new ModelDataLock("Striker Bow", Material.BOW, 1));
-        addLock(new ModelDataLock("Crazy Slots", Material.CLAY_BALL, 4));
-        addLock(new ModelDataLock("Vulcan Crossbow", Material.CROSSBOW, 1));
-        addLock(new ModelDataLock("Pale Gun", Material.CROSSBOW, 2));
-        addLock(new ModelDataLock("Knightfall Lvl 1", Material.MACE, 15));
-        addLock(new ModelDataLock("Knightfall Lvl 2", Material.MACE, 16));
-        addLock(new ModelDataLock("Knightfall Lvl 3", Material.MACE, 17));
-        addLock(new ModelDataLock("Paladin's Axe", Material.NETHERITE_AXE, 2));
-        addLock(new ModelDataLock("Copper Boots", Material.NETHERITE_BOOTS, 1));
-        addLock(new ModelDataLock("Copper Chestplate", Material.NETHERITE_CHESTPLATE, 1));
-        addLock(new ModelDataLock("Copper Helmet", Material.NETHERITE_HELMET, 1));
-        addLock(new ModelDataLock("Copper Leggings", Material.NETHERITE_LEGGINGS, 1));
-        addLock(new ModelDataLock("Copper Pickaxe", Material.NETHERITE_PICKAXE, 1));
-        addLock(new ModelDataLock("Bone Blade", Material.NETHERITE_SWORD, 1));
-        addLock(new ModelDataLock("Wand of Illusion", Material.NETHERITE_SWORD, 2));
-        addLock(new ModelDataLock("Bloodlust", Material.NETHERITE_SWORD, 3));
-        addLock(new ModelDataLock("Frost Scythe", Material.NETHERITE_SWORD, 4));
-        addLock(new ModelDataLock("Nightpiercer", Material.NETHERITE_SWORD, 5));
-        addLock(new ModelDataLock("Hyperion", Material.NETHERITE_SWORD, 6));
-        addLock(new ModelDataLock("Pure Blade", Material.NETHERITE_SWORD, 7));
-        addLock(new ModelDataLock("Earth Gautlet", Material.NETHERITE_SWORD, 8));
-        addLock(new ModelDataLock("Withered Blade", Material.NETHERITE_SWORD, 9));
-        addLock(new ModelDataLock("Shadow Blade", Material.NETHERITE_SWORD, 10));
-        addLock(new ModelDataLock("Cutlass", Material.NETHERITE_SWORD, 11));
-        addLock(new ModelDataLock("Windweaver", Material.NETHERITE_SWORD, 12));
-        addLock(new ModelDataLock("Echo", Material.NETHERITE_SWORD, 13));
-        addLock(new ModelDataLock("Eclipse", Material.NETHERITE_SWORD, 14));
+        addLock(new ModelDataLock("altar.nuke_remote", Material.AMETHYST_SHARD, 4));
+        addLock(new ModelDataLock("altar.striker_bow", Material.BOW, 1));
+        addLock(new ModelDataLock("altar.crazy_slots", Material.CLAY_BALL, 4));
+        addLock(new ModelDataLock("altar.vulcan_crossbow", Material.CROSSBOW, 1));
+        addLock(new ModelDataLock("altar.pale_gun", Material.CROSSBOW, 2));
+        addLock(new ModelDataLock("altar.knightfall_1", Material.MACE, 15));
+        addLock(new ModelDataLock("altar.knightfall_2", Material.MACE, 16));
+        addLock(new ModelDataLock("altar.knightfall_3", Material.MACE, 17));
+        addLock(new ModelDataLock("altar.paladins_axe", Material.NETHERITE_AXE, 2));
+        addLock(new ModelDataLock("altar.copper_boots", Material.NETHERITE_BOOTS, 1));
+        addLock(new ModelDataLock("altar.copper_chestplate", Material.NETHERITE_CHESTPLATE, 1));
+        addLock(new ModelDataLock("altar.copper_helmet", Material.NETHERITE_HELMET, 1));
+        addLock(new ModelDataLock("altar.copper_leggings", Material.NETHERITE_LEGGINGS, 1));
+        addLock(new ModelDataLock("altar.copper_pickaxe", Material.NETHERITE_PICKAXE, 1));
+        addLock(new ModelDataLock("altar.bone_blade", Material.NETHERITE_SWORD, 1));
+        addLock(new ModelDataLock("altar.wand_of_illusion", Material.NETHERITE_SWORD, 2));
+        addLock(new ModelDataLock("altar.bloodlust", Material.NETHERITE_SWORD, 3));
+        addLock(new ModelDataLock("altar.frost_scythe", Material.NETHERITE_SWORD, 4));
+        addLock(new ModelDataLock("altar.nightpiercer", Material.NETHERITE_SWORD, 5));
+        addLock(new ModelDataLock("altar.hyperion", Material.NETHERITE_SWORD, 6));
+        addLock(new ModelDataLock("altar.pure_blade", Material.NETHERITE_SWORD, 7));
+        addLock(new ModelDataLock("altar.earth_gauntlet", Material.NETHERITE_SWORD, 8));
+        addLock(new ModelDataLock("altar.withered_blade", Material.NETHERITE_SWORD, 9));
+        addLock(new ModelDataLock("altar.shadow_blade", Material.NETHERITE_SWORD, 10));
+        addLock(new ModelDataLock("altar.cutlass", Material.NETHERITE_SWORD, 11));
+        addLock(new ModelDataLock("altar.windweaver", Material.NETHERITE_SWORD, 12));
+        addLock(new ModelDataLock("altar.echo", Material.NETHERITE_SWORD, 13));
+        addLock(new ModelDataLock("altar.eclipse", Material.NETHERITE_SWORD, 14));
 
         // Trims SMP
-        addLock(new ModelDataLock("Dragon Greatblade", Material.DIAMOND_SWORD, 1141));
+        addLock(new ModelDataLock("trims.dragon_greatblade", Material.DIAMOND_SWORD, 1141));
 
         // Crazy Mythicals
-        addLock(new ItemModelLock("Dragon Cannon", Material.CROSSBOW, new NamespacedKey("cm", "item/weapons/dragon")));
-        addLock(new ItemModelLock("Hourglass Dagger", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/dagger")));
-        addLock(new ItemModelLock("Great hammer", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/hammer")));
-        addLock(new ItemModelLock("Ghost Shield", Material.SHIELD, new NamespacedKey("cm", "item/weapons/ghost_shield")));
-        addLock(new ItemModelLock("The Judge", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/judge")));
+        addLock(new ItemModelLock("crazymyth.dragon_cannon", Material.CROSSBOW, new NamespacedKey("cm", "item/weapons/dragon")));
+        addLock(new ItemModelLock("crazymyth.hourglass_dagger", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/dagger")));
+        addLock(new ItemModelLock("crazymyth.great_hammer", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/hammer")));
+        addLock(new ItemModelLock("crazymyth.ghost_shield", Material.SHIELD, new NamespacedKey("cm", "item/weapons/ghost_shield")));
+        addLock(new ItemModelLock("crazymyth.the_judge", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/judge")));
 
         // ManePear Scythe
-        addLock(new ModelDataLock("ManePear Scythe", Material.MACE, 9999));
+        addLock(new ModelDataLock("mpscythe.manepear_scythe", Material.MACE, 9999));
     }
 
     public void addLock(Lock lock) {
