@@ -20,7 +20,6 @@ import java.util.Map;
 
 public final class Main extends JavaPlugin implements Listener {
     public static final Logger LOGGER = LoggerFactory.getLogger("LockedMythics");
-    public static final NamespacedKey MYTHIC_LOCK = new NamespacedKey("locked-mythics", "lock");
     public static final Map<String,Lock> LOCKS = new HashMap<>();
 
     @Override
