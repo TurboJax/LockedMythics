@@ -78,6 +78,9 @@ public final class Main extends JavaPlugin implements Listener {
         LOCKS.add(new ItemModelLock("Great hammer", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/hammer")));
         LOCKS.add(new ItemModelLock("Ghost Shield", Material.SHIELD, new NamespacedKey("cm", "item/weapons/ghost_shield")));
         LOCKS.add(new ItemModelLock("The Judge", Material.NETHERITE_SWORD, new NamespacedKey("cm", "item/weapons/judge")));
+
+        // ManePear Scythe
+        LOCKS.add(new ModelDataLock("ManePear Scythe", Material.MACE, 9999));
     }
 
     @EventHandler
