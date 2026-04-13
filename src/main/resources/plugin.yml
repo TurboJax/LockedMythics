@@ -1,6 +1,47 @@
 name: LockedMythics
 version: '${version}'
 
-main: org.turbojax.lockedMythics.Main
+main: org.turbojax.lockedMythics.LockedMythics
+description: Allows admins to prevent players from picking up items based on their model or custom model data.
+author: TurboJax
 api-version: '1.21.11'
-load: POSTWORLD
+website: https://github.com/TurboJax/LockedMythics
+
+libraries:
+  - "org.xerial:sqlite-jdbc:${sqliteVersion}"
+
+permissions:
+  lockedmythics.addlock:
+    description: Allows a player to add locks to another player
+    default: false
+  lockedmythics.getlocks:
+    description: Allows a player to see the locks of another player
+    default: false
+  lockedmythics.reloadlocks:
+    description: Allows a player to reload the list of locks
+    default: false
+  lockedmythics.removelock:
+    description: Allows a player to remove locks from another player
+    default: false
+  lockedmythics.admin:
+    description: Gives a player full access to this plugin
+    default: op
+    children:
+      lockedmythics.addlock: true
+      lockedmythics.getlocks: true
+      lockedmythics.reloadlocks: true
+      lockedmythics.removelock: true
+
+commands:
+  addlock:
+    description: Adds one or more locks to a player
+    usage: "/addlock <player> <locks|*>"
+  getlocks:
+    description: Gets the locks a player has
+    usage: "/getlocks <player>"
+  reloadlocks:
+    description: Reloads the list of locks from the config
+    usage: "/reloadlocks"
+  removelock:
+    description: Removes one or more locks from a player
+    usage: "/removelock <player> <locks|*>"

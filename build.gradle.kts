@@ -29,7 +29,7 @@ tasks {
     }
 
     processResources {
-        val props = mapOf("version" to version)
+        val props = mapOf("version" to version, "sqliteVersion" to sqliteVersion)
         filesMatching("plugin.yml") {
             expand(props)
         }
