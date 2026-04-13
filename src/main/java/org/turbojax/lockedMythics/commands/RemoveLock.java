@@ -24,7 +24,7 @@ public class RemoveLock implements BasicCommand {
     }
 
     @Override
-    public void execute(CommandSourceStack commandSourceStack, String[] args) {
+    public void execute(CommandSourceStack commandSourceStack, String @NotNull [] args) {
         Audience sender = commandSourceStack.getSender();
 
         if (commandSourceStack.getExecutor() != null) {
