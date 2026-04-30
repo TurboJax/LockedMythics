@@ -61,6 +61,22 @@ public class SqliteDataManager {
     }
 
     /**
+     * Adds a global lock.
+     * 
+     * @param lock The lock to add
+     */
+    public void addGlobalLock(Lock lock) {
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO locks (uuid, lock_id) VALUES (?, ?);");
+            stmt.setBytes(1, "*".getBytes());
+            stmt.setString(2, lock.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            LockedMythics.LOGGER.error("Error while adding global lock {}.", lock.getId(), e);
+        }
+    }
+
+    /**
      * Removes a lock from a player.
      *
      * @param player The player to remove a lock from
@@ -76,6 +92,25 @@ public class SqliteDataManager {
             stmt.executeUpdate();
         } catch (SQLException e) {
             LockedMythics.LOGGER.error("Error while removing lock {} from {}.", lock.getId(), player.getName(), e);
+        }
+    }
+
+    public void removeAllLocks() {
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM locks WHERE 1 = 1;");
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            LockedMythics.LOGGER.error("Error while removing locks.", e);
+        }
+    }
+
+    public void removeLocksFromPlayer(OfflinePlayer player) {
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM locks WHERE uuid = ?;");
+            stmt.setBytes(1, player.getUniqueId().toString().getBytes());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            LockedMythics.LOGGER.error("Error while removing locks.", e);
         }
     }
 
@@ -104,8 +139,9 @@ public class SqliteDataManager {
 
     public List<Lock> getLocks(OfflinePlayer player) {
         try (Connection connection = dataSource.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement("SELECT lock_id FROM locks WHERE uuid = ?;");
+            PreparedStatement stmt = connection.prepareStatement("SELECT lock_id FROM locks WHERE uuid = ? OR uuid = ?;");
             stmt.setBytes(1, player.getUniqueId().toString().getBytes());
+            stmt.setBytes(2, "*".getBytes());
             ResultSet results = stmt.executeQuery();
 
             List<Lock> locks = new ArrayList<>();
