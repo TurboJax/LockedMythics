@@ -64,14 +64,7 @@ public final class LockedMythics extends JavaPlugin implements Listener {
         ItemStack item = event.getItem().getItemStack();
 
         dataManager.getLocks(player).stream().filter(lock -> lock.matches(item)).findAny().ifPresent(lock -> {
-            // Preventing console spam by only letting the message play if it has been 2 seconds
-            Long pickupTime = recentPickups.getOrDefault(player.getUniqueId(), 0L);
-            if (pickupTime == 0 || pickupTime < System.currentTimeMillis()) {
-                recentPickups.put(player.getUniqueId(), System.currentTimeMillis() + 2000);
-                player.sendMessage(Component.text("You can't pick up ", NamedTextColor.RED).append(item.effectiveName()));
-            }
-
-            event.setCancelled(true);
+            player.setGlowing(true);
         });
     }
 
