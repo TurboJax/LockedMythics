@@ -38,29 +38,7 @@ public class GetLocks implements BasicCommand {
         }
 
         String playerName = args[0];
-        OfflinePlayer player;
-        if (playerName.startsWith("@")) {
-            List<Player> players = Bukkit.selectEntities(commandSourceStack.getSender(), playerName)
-                    .stream()
-                    .filter(entity -> entity instanceof Player)
-                    .map(p -> (Player) p)
-                    .toList();
-
-            if (players.isEmpty()) {
-                LockedMythics.LOGGER.error("No players found");
-                return;
-            }
-
-            if (players.size() > 1) {
-                LockedMythics.LOGGER.error("Too many results");
-                return;
-            }
-
-            player = players.getFirst();
-            playerName = player.getName();
-        } else {
-            player = Bukkit.getOfflinePlayer(playerName);
-        }
+        OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
 
         // Getting the locks the player has
         List<Lock> locks = dataManager.getLocks(player);
@@ -87,7 +65,7 @@ public class GetLocks implements BasicCommand {
     @Override
     public @NotNull Collection<String> suggest(@NotNull CommandSourceStack commandSourceStack, String[] args) {
         Stream<String> stream = Stream.empty();
-        if (args.length <= 1) stream = Stream.concat(Stream.of("@p"), Bukkit.getOnlinePlayers().stream().map(Player::getName));
+        if (args.length <= 1) stream = Bukkit.getOnlinePlayers().stream().map(Player::getName);
 
         // Filtering by what was entered
         if (args.length > 0) {

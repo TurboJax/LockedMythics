@@ -7,7 +7,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.turbojax.lockedMythics.LockedMythics;
@@ -15,7 +14,6 @@ import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class AddLock implements BasicCommand {
@@ -34,32 +32,13 @@ public class AddLock implements BasicCommand {
         }
 
         if (args.length < 2) {
-            sender.sendMessage(Component.text("Usage: /addlock <player> <locks|*>", NamedTextColor.YELLOW));
+            sender.sendMessage(Component.text("Usage: /addlock <player|--global> <locks|*>", NamedTextColor.YELLOW));
         }
 
         // Getting the player
         String playerName = args[0];
-        OfflinePlayer player;
-        if (playerName.startsWith("@")) {
-            List<Player> players = Bukkit.selectEntities(commandSourceStack.getSender(), playerName)
-                    .stream()
-                    .filter(entity -> entity instanceof Player)
-                    .map(p -> (Player) p)
-                    .toList();
-
-            if (players.isEmpty()) {
-                LockedMythics.LOGGER.error("No players found");
-                return;
-            }
-
-            if (players.size() > 1) {
-                LockedMythics.LOGGER.error("Too many results");
-                return;
-            }
-
-            player = players.getFirst();
-            playerName = player.getName();
-        } else {
+        OfflinePlayer player = null;
+        if (!playerName.equals("--global")) {
             player = Bukkit.getOfflinePlayer(playerName);
         }
 
@@ -69,10 +48,15 @@ public class AddLock implements BasicCommand {
 
             // Handling the '*' argument
             if (lockId.equals("*")) {
-                for (Lock lock : LockedMythics.LOCKS.values()) {
-                    dataManager.addLock(player, lock);
+                if (player == null) {
+                    LockedMythics.LOCKS.values().forEach(dataManager::addGlobalLock);
+                    sender.sendMessage(Component.text("Made all locks global", NamedTextColor.GOLD));
+                } else {
+                    for (Lock lock : LockedMythics.LOCKS.values()) {
+                        dataManager.addLock(player, lock);
+                    }
+                    sender.sendMessage(Component.text("Applied all locks to " + playerName, NamedTextColor.GOLD));
                 }
-                sender.sendMessage(Component.text("Applied all locks to " + playerName, NamedTextColor.GOLD));
                 return;
             }
 
@@ -82,9 +66,14 @@ public class AddLock implements BasicCommand {
                 continue;
             }
 
-            // Adding the lock to the player
-            dataManager.addLock(player, lock);
-            sender.sendMessage(Component.text("Added the \"" + lockId + "\" lock to " + playerName, NamedTextColor.GOLD));
+            if (player == null) {
+                dataManager.addGlobalLock(lock);
+                sender.sendMessage(Component.text("Added the \"" + lockId + "\" lock globally.", NamedTextColor.GOLD));
+            } else {
+                // Adding the lock to the player
+                dataManager.addLock(player, lock);
+                sender.sendMessage(Component.text("Added the \"" + lockId + "\" lock to " + playerName, NamedTextColor.GOLD));
+            }
         }
     }
 
@@ -92,7 +81,7 @@ public class AddLock implements BasicCommand {
     public @NotNull Collection<String> suggest(@NotNull CommandSourceStack commandSourceStack, String[] args) {
         Stream<String> stream;
         if (args.length <= 1) {
-            stream = Stream.concat(Stream.of("@p"), Bukkit.getOnlinePlayers().stream().map(Player::getName));
+            stream = Stream.concat(Stream.of("--global"), Bukkit.getOnlinePlayers().stream().map(Player::getName));
         } else {
             stream = Stream.concat(Stream.of("*"), LockedMythics.LOCKS.keySet().stream());
         }

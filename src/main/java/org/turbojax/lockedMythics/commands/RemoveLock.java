@@ -14,7 +14,6 @@ import org.turbojax.lockedMythics.SqliteDataManager;
 import org.turbojax.lockedMythics.locks.Lock;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class RemoveLock implements BasicCommand {
@@ -33,31 +32,12 @@ public class RemoveLock implements BasicCommand {
         }
 
         if (args.length < 2) {
-            sender.sendMessage(Component.text("Usage: /removelock <player> <locks|*>", NamedTextColor.YELLOW));
+            sender.sendMessage(Component.text("Usage: /removelock <player|--global> <locks|*>", NamedTextColor.YELLOW));
         }
 
         String playerName = args[0];
-        OfflinePlayer player;
-        if (playerName.startsWith("@")) {
-            List<Player> players = Bukkit.selectEntities(commandSourceStack.getSender(), playerName)
-                    .stream()
-                    .filter(entity -> entity instanceof Player)
-                    .map(p -> (Player) p)
-                    .toList();
-
-            if (players.isEmpty()) {
-                LockedMythics.LOGGER.error("No players found");
-                return;
-            }
-
-            if (players.size() > 1) {
-                LockedMythics.LOGGER.error("Too many results");
-                return;
-            }
-
-            player = players.getFirst();
-            playerName = player.getName();
-        } else {
+        OfflinePlayer player = null;
+        if (!playerName.equals("--global")) {
             player = Bukkit.getOfflinePlayer(playerName);
         }
 
@@ -67,11 +47,14 @@ public class RemoveLock implements BasicCommand {
 
             // Handling the '*' argument
             if (lockId.equals("*")) {
-                for (Lock lock : LockedMythics.LOCKS.values()) {
-                    dataManager.removeLock(player, lock);
+                if (player == null) {
+                    dataManager.removeAllLocks();
+                    sender.sendMessage(Component.text("Removed all locks from all players", NamedTextColor.GOLD));
+                } else {
+                    dataManager.removeLocksFromPlayer(player);
+                    sender.sendMessage(Component.text("Removed all locks from " + playerName, NamedTextColor.GOLD));
                 }
-                sender.sendMessage(Component.text("Removed all locks from " + playerName, NamedTextColor.GOLD));
-                return;
+                    return;
             }
 
             Lock lock = LockedMythics.LOCKS.get(lockId);
@@ -90,7 +73,7 @@ public class RemoveLock implements BasicCommand {
     public @NotNull Collection<String> suggest(@NotNull CommandSourceStack commandSourceStack, String[] args) {
         Stream<String> stream;
         if (args.length <= 1) {
-            stream = Stream.concat(Stream.of("@p"), Bukkit.getOnlinePlayers().stream().map(Player::getName));
+            stream = Stream.concat(Stream.of("--global"), Bukkit.getOnlinePlayers().stream().map(Player::getName));
         } else {
             stream = Stream.concat(Stream.of("*"), dataManager.getLocks(Bukkit.getOfflinePlayer(args[0])).stream().map(Lock::getId));
         }
