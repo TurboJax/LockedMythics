@@ -6,6 +6,7 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.turbojax.lockedMythics.locks.ItemModelLock;
 import org.turbojax.lockedMythics.locks.Lock;
+import org.turbojax.lockedMythics.locks.MaterialLock;
 import org.turbojax.lockedMythics.locks.CustomModelDataLock;
 
 import java.util.List;
@@ -82,6 +83,21 @@ public class MainConfig {
                 }
 
                 yield new CustomModelDataLock(id, customModelData, material);
+            case "MATERIAL":
+                // Getting the material
+                matName = section.getString("material");
+                if (matName == null) {
+                    LockedMythics.LOGGER.error("Lock {} is missing the material field", id);
+                    yield null;
+                }
+
+                material = Material.getMaterial(matName);
+                if (material == null) {
+                    LockedMythics.LOGGER.error("Lock {} has an invalid material \"{}\"", id, matName);
+                    yield null;
+                }
+                
+                yield new MaterialLock(id, material);
             case null:
             default:
                 LockedMythics.LOGGER.error("Lock {} has an invalid lock type", id);
