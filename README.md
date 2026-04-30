@@ -47,3 +47,14 @@ item_model_example:
   custom_model_data: 1
   material: MACE # OPTIONAL
 ```
+
+#### MATERIAL
+This determines whether an item should be locked by checking if it is the provided material.  
+It requires the "material" key, which which should be the namespace for the item's material.  Works with other non-vanilla namespaces.
+
+Example:
+```yml
+item_model_example:
+  type: MATERIAL
+  material: MACE
+```
