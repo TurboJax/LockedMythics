@@ -15,7 +15,6 @@ import org.turbojax.lockedMythics.locks.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public final class LockedMythics extends JavaPlugin implements Listener {
     public static final Logger LOGGER = LoggerFactory.getLogger("LockedMythics");
@@ -53,8 +52,6 @@ public final class LockedMythics extends JavaPlugin implements Listener {
     public static void addLock(Lock lock) {
         LOCKS.put(lock.getId(), lock);
     }
-
-    public final Map<UUID,Long> recentPickups = new HashMap<>();
 
     @EventHandler
     public void onPlayerPickupItem(EntityPickupItemEvent event) {
