@@ -4,10 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.slf4j.Logger;
@@ -67,13 +67,15 @@ public final class LockedMythics extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onPlayerDropItem(EntityDropItemEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
+    public void onPlayerDropItem(PlayerDropItemEvent event) {
+        Player player = event.getPlayer();
+        player.setGlowing(false);
 
-        ItemStack item = event.getItemDrop().getItemStack();
-
-        if (dataManager.getLocks(player).stream().filter(lock -> lock.matches(item)).findAny().isEmpty()) {
-            player.setGlowing(false);
+        for (ItemStack item : player.getInventory()) {
+            if (player.isGlowing()) return;
+            dataManager.getLocks(player).stream().filter(lock -> lock.matches(item)).findAny().ifPresent(lock -> {
+                player.setGlowing(true);
+            });
         }
     }
 
@@ -85,6 +87,8 @@ public final class LockedMythics extends JavaPlugin implements Listener {
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
         if (!(event.getPlayer() instanceof Player player)) return;
+
+        player.setGlowing(false);
 
         for (ItemStack item : player.getInventory()) {
             if (player.isGlowing()) return;
